@@ -1,7 +1,7 @@
 
 // NOVA - Application Configuration
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://nova-online-shopping.onrender.com/api";
 
 // Application details
 const APP_NAME = "NOVA";
