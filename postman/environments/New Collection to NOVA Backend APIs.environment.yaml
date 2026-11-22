@@ -1,0 +1,4 @@
+name: New Collection to NOVA Backend APIs
+values:
+  - key: baseUrl
+    value: 'http://localhost:5000'

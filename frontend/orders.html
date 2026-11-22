@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Orders | NOVA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="main-header">
+
+        <div class="header-container">
+
+            <a href="products.html" class="brand-logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </span>
+                <span>NOVA<span class="logo-dot">.</span></span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="products.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="orders.html" class="active">My Orders</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="profile.html" class="header-icon" title="My Profile">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+
+                <a href="cart.html" class="header-icon" title="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button type="button" class="header-icon logout-btn"
+                    id="logoutButton" title="Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="orders-page">
+
+        <div class="page-container">
+
+            <!-- PAGE HEADING -->
+            <section class="page-heading">
+
+                <div>
+                    <span class="page-eyebrow">YOUR NOVA EXPERIENCE</span>
+
+                    <h1>My Orders<span class="logo-dot">.</span></h1>
+
+                    <p>
+                        Keep track of your purchases and view your order history.
+                    </p>
+                </div>
+
+                <a href="products.html" class="continue-shopping">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Continue Shopping
+                </a>
+
+            </section>
+
+
+            <!-- MESSAGE -->
+            <div id="messageBox" class="message-box"
+                role="status" aria-live="polite"></div>
+
+
+            <!-- ORDER FILTERS -->
+            <section class="orders-toolbar">
+
+                <div class="order-filter-tabs">
+
+                    <button type="button" class="order-filter active"
+                        data-filter="all">
+                        All Orders
+                    </button>
+
+                    <button type="button" class="order-filter"
+                        data-filter="pending">
+                        Pending
+                    </button>
+
+                    <button type="button" class="order-filter"
+                        data-filter="paid">
+                        Paid
+                    </button>
+
+                    <button type="button" class="order-filter"
+                        data-filter="completed">
+                        Completed
+                    </button>
+
+                </div>
+
+                <div class="orders-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" id="orderSearch"
+                        placeholder="Search order ID...">
+                </div>
+
+            </section>
+
+
+            <!-- ORDER SUMMARY CARDS -->
+            <section class="order-stats">
+
+                <div class="order-stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Orders</span>
+                        <h3 id="totalOrders">0</h3>
+                    </div>
+                </div>
+
+                <div class="order-stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Pending Orders</span>
+                        <h3 id="pendingOrders">0</h3>
+                    </div>
+                </div>
+
+                <div class="order-stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Paid Orders</span>
+                        <h3 id="paidOrders">0</h3>
+                    </div>
+                </div>
+
+                <div class="order-stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Spent</span>
+                        <h3 id="totalSpent">₹0.00</h3>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- ORDER LIST -->
+            <section class="orders-list-section">
+
+                <div class="orders-list-heading">
+
+                    <div>
+                        <h2>Order History</h2>
+                        <p id="orderResultCount">Your recent purchases</p>
+                    </div>
+
+                    <button type="button" class="refresh-orders-btn"
+                        id="refreshOrders">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <!-- ORDERS WILL BE LOADED HERE -->
+                <div id="ordersList" class="orders-list">
+
+                    <div class="orders-loading">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <p>Loading your orders...</p>
+                    </div>
+
+                </div>
+
+
+                <!-- EMPTY ORDERS -->
+                <div id="emptyOrders" class="empty-orders" hidden>
+
+                    <div class="empty-orders-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+
+                    <h2>No orders found</h2>
+
+                    <p>
+                        You haven't placed any orders yet.
+                        Start exploring our collection and make your first purchase!
+                    </p>
+
+                    <a href="products.html" class="primary-btn">
+                        Start Shopping
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- CHECKOUT -->
+            <section id="checkout" class="checkout-section">
+                <h2>Checkout</h2>
+                <p>Choose how you would like to pay for your order.</p>
+
+                <form id="checkoutForm">
+                    <div class="summary-row">
+                        <span>Order subtotal</span>
+                        <strong id="checkoutSubtotal">₹0.00</strong>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <strong id="checkoutTotal">₹0.00</strong>
+                    </div>
+
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="cash">
+                        <span>
+                            <strong>Cash Payment</strong>
+                            <small>Pay using cash as per the store's payment process.</small>
+                        </span>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="credit">
+                        <span>
+                            <strong>Credit Payment</strong>
+                            <small>Use your available customer credit limit.</small>
+                        </span>
+                    </label>
+
+                    <p id="paymentMethodDisplay" class="checkout-payment-display">
+                        Not selected
+                    </p>
+
+                    <div id="checkoutMessage" class="message-box hidden"
+                         role="status" aria-live="polite"></div>
+
+                    <button type="submit" id="placeOrderButton" class="primary-btn">
+                        <span>Place Order</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </section>
+
+
+            <!-- ORDER DETAILS MODAL -->
+            <div class="modal-overlay hidden" id="orderDetailsModal">
+
+                <div class="order-details-modal">
+
+                    <div class="modal-header">
+
+                        <div>
+                            <span class="page-eyebrow">NOVA PURCHASE</span>
+                            <h2>Order Details</h2>
+                        </div>
+
+                        <button type="button" class="modal-close"
+                            id="closeOrderModal" aria-label="Close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div id="orderDetailsContent">
+
+                        <div class="orders-loading">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            <p>Loading order details...</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+
+        <div class="footer-container">
+
+            <a href="products.html" class="brand-logo">
+                NOVA<span class="logo-dot">.</span>
+            </a>
+
+            <p>Made for the way you shop.</p>
+
+            <span>© 2026 NOVA. All rights reserved.</span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/orders.js"></script>
+    <script src="js/checkout.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA | Discover Products</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/products.js" defer></script>
+</head>
+
+<body class="shop-page">
+
+    <!-- NAVBAR -->
+    <nav class="shop-navbar">
+        <a href="products.html" class="shop-logo">
+            <span class="logo-icon">N</span>
+            NOVA<span class="logo-dot">.</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="products.html" class="active">Shop</a>
+            <a href="orders.html">My Orders</a>
+            <a href="profile.html">My Profile</a>
+        </div>
+
+        <div class="nav-actions">
+            <a href="cart.html" class="cart-link">
+                <span>🛒</span> Cart
+                <span id="cartCount" class="cart-count">0</span>
+            </a>
+
+            <button id="logoutButton" class="logout-btn">Logout ↗</button>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div id="messageBox" class="message-box hidden" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="shop-hero">
+        <div class="hero-content">
+            <span class="hero-label">✦ THE NOVA COLLECTION</span>
+
+            <h1>
+                Find your next
+                <span>favourite thing.</span>
+            </h1>
+
+            <p>
+                Explore carefully selected products.
+                Discover more, shop smarter and enjoy every moment.
+            </p>
+
+            <a href="#productSection" class="hero-button">
+                Explore Collection →
+            </a>
+        </div>
+
+        <div class="hero-decoration">
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+            <div class="hero-center">
+                <span>✦</span>
+                <p>YOUR WORLD.<br>YOUR STYLE.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY SECTION -->
+    <section class="category-section">
+        <div>
+            <span class="section-eyebrow">EXPLORE BY CATEGORY</span>
+            <h2>Shop your way.</h2>
+        </div>
+
+        <div id="categoryFilters" class="category-filters">
+            <button class="category-chip active" data-category="all">
+                All Products
+            </button>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <main id="productSection" class="products-container">
+
+        <div class="products-heading">
+            <div>
+                <span class="section-eyebrow">CURATED FOR YOU</span>
+                <h2>Our Collection<span class="logo-dot">.</span></h2>
+                <p id="productCount">Discover something special.</p>
+            </div>
+
+            <div class="product-controls">
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search products..."
+                    >
+                </div>
+
+                <select id="sortSelect">
+                    <option value="default">Sort: Featured</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="loadingMessage" class="status-message">
+            <div class="loader"></div>
+            <p>Preparing your NOVA collection...</p>
+        </div>
+
+        <div id="errorMessage" class="status-message error-state" hidden>
+            <span>!</span>
+            <h3>Something went wrong</h3>
+            <p id="errorText">Unable to load products.</p>
+            <button id="retryBtn" class="primary-button">Try Again</button>
+        </div>
+
+        <div id="emptyMessage" class="status-message" hidden>
+            <span class="empty-icon">⌕</span>
+            <h3>No products found</h3>
+            <p>Try another search or category.</p>
+        </div>
+
+        <div id="productGrid" class="product-grid"></div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="shop-footer">
+        <div class="footer-brand">
+            NOVA<span class="logo-dot">.</span>
+            <p>Shop beyond ordinary.</p>
+        </div>
+
+        <p>© 2026 NOVA. All rights reserved.</p>
+
+        <a href="products.html">Back to top ↑</a>
+    </footer>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="productModal" class="modal-overlay" hidden>
+        <div class="product-modal">
+            <button id="closeModal" class="modal-close">×</button>
+
+            <div class="modal-product-icon" id="modalIcon">✦</div>
+
+            <span class="section-eyebrow">NOVA PRODUCT</span>
+
+            <h2 id="modalTitle">Product Name</h2>
+
+            <p id="modalDescription">Product description</p>
+
+            <h3 id="modalPrice">₹0</h3>
+
+            <p id="modalStock">Available stock</p>
+
+            <button id="modalAddToCart" class="primary-button">
+                Add to Cart →
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

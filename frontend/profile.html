@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | NOVA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="main-header">
+
+        <div class="header-container">
+
+            <a href="products.html" class="brand-logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </span>
+                <span>NOVA<span class="logo-dot">.</span></span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="products.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="orders.html">My Orders</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="profile.html" class="header-icon active"
+                    title="My Profile">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+
+                <a href="cart.html" class="header-icon"
+                    title="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button type="button" class="header-icon logout-btn"
+                    id="logoutButton" title="Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="profile-page">
+
+        <div class="page-container">
+
+            <!-- PAGE HEADING -->
+            <section class="page-heading">
+
+                <div>
+                    <span class="page-eyebrow">YOUR NOVA ACCOUNT</span>
+
+                    <h1>My Profile<span class="logo-dot">.</span></h1>
+
+                    <p>
+                        Manage your personal information and account details.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- MESSAGE -->
+            <div id="messageBox" class="message-box"
+                role="status" aria-live="polite"></div>
+
+
+            <!-- PROFILE LAYOUT -->
+            <section class="profile-layout">
+
+                <!-- LEFT PROFILE CARD -->
+                <aside class="profile-sidebar">
+
+                    <div class="profile-card">
+
+                        <div class="profile-avatar" id="profileAvatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <h2 id="profileDisplayName">Loading...</h2>
+
+                        <p id="profileDisplayEmail">
+                            Loading account details...
+                        </p>
+
+                        <span class="profile-status" id="profileStatus">
+                            <i class="fa-solid fa-circle"></i>
+                            Active Account
+                        </span>
+
+                    </div>
+
+
+                    <!-- PROFILE NAVIGATION -->
+                    <nav class="profile-navigation">
+
+                        <a href="#personalInfo" class="profile-nav-link active">
+                            <i class="fa-regular fa-user"></i>
+                            Personal Information
+                        </a>
+
+                        <a href="#accountInfo" class="profile-nav-link">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Account Information
+                        </a>
+
+                        <a href="#creditInfo" class="profile-nav-link">
+                            <i class="fa-solid fa-wallet"></i>
+                            Credit Information
+                        </a>
+
+                        <a href="orders.html" class="profile-nav-link">
+                            <i class="fa-solid fa-box"></i>
+                            My Orders
+                        </a>
+
+                    </nav>
+
+                </aside>
+
+
+                <!-- RIGHT PROFILE CONTENT -->
+                <div class="profile-content">
+
+
+                    <!-- PERSONAL INFORMATION -->
+                    <section class="profile-section" id="personalInfo">
+
+                        <div class="profile-section-heading">
+
+                            <div>
+                                <span class="page-eyebrow">YOUR DETAILS</span>
+                                <h2>Personal Information</h2>
+                                <p>Update your personal details below.</p>
+                            </div>
+
+                            <div class="profile-section-icon">
+                                <i class="fa-regular fa-id-card"></i>
+                            </div>
+
+                        </div>
+
+
+                        <form id="profileForm">
+
+                            <input type="hidden" id="profileId">
+
+                            <div class="profile-form-grid">
+
+                                <div class="form-group">
+                                    <label for="profileName">
+                                        Full Name
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user input-icon"></i>
+
+                                        <input type="text" id="profileName"
+                                            placeholder="Enter your full name"
+                                            required>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="profileEmail">
+                                        Email Address
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-envelope input-icon"></i>
+
+                                        <input type="email" id="profileEmail"
+                                            placeholder="Enter your email"
+                                            readonly>
+                                    </div>
+
+                                    <small>Email address cannot be changed here.</small>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="profilePhone">
+                                        Phone Number
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-phone input-icon"></i>
+
+                                        <input type="tel" id="profilePhone"
+                                            maxlength="10"
+                                            inputmode="numeric"
+                                            placeholder="Enter your phone number"
+                                            required>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-form-actions">
+
+                                <button type="reset" class="secondary-btn"
+                                    id="cancelProfileChanges">
+                                    Cancel
+                                </button>
+
+                                <button type="submit" class="primary-btn"
+                                    id="saveProfileButton">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save Changes
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- ACCOUNT INFORMATION -->
+                    <section class="profile-section" id="accountInfo">
+
+                        <div class="profile-section-heading">
+
+                            <div>
+                                <span class="page-eyebrow">ACCOUNT OVERVIEW</span>
+                                <h2>Account Information</h2>
+                                <p>View your account details and status.</p>
+                            </div>
+
+                            <div class="profile-section-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="account-info-list">
+
+                            <div class="account-info-row">
+                                <div>
+                                    <span>Customer ID</span>
+                                    <strong id="customerId">--</strong>
+                                </div>
+
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+
+
+                            <div class="account-info-row">
+                                <div>
+                                    <span>Account Status</span>
+                                    <strong id="accountStatus">--</strong>
+                                </div>
+
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+
+                            <div class="account-info-row">
+                                <div>
+                                    <span>Member Since</span>
+                                    <strong id="memberSince">--</strong>
+                                </div>
+
+                                <i class="fa-regular fa-calendar"></i>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- CREDIT INFORMATION -->
+                    <section class="profile-section" id="creditInfo">
+
+                        <div class="profile-section-heading">
+
+                            <div>
+                                <span class="page-eyebrow">PAYMENT OVERVIEW</span>
+                                <h2>Credit Information</h2>
+                                <p>Keep track of your available credit balance.</p>
+                            </div>
+
+                            <div class="profile-section-icon">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="credit-overview">
+
+                            <div class="credit-card">
+
+                                <span>Credit Limit</span>
+
+                                <h2 id="creditLimit">₹0.00</h2>
+
+                                <i class="fa-solid fa-credit-card credit-card-icon"></i>
+
+                            </div>
+
+
+                            <div class="credit-card">
+
+                                <span>Credit Used</span>
+
+                                <h2 id="creditUsed">₹0.00</h2>
+
+                                <i class="fa-solid fa-chart-pie credit-card-icon"></i>
+
+                            </div>
+
+
+                            <div class="credit-card">
+
+                                <span>Available Credit</span>
+
+                                <h2 id="availableCredit">₹0.00</h2>
+
+                                <i class="fa-solid fa-wallet credit-card-icon"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="credit-progress-section">
+
+                            <div class="credit-progress-heading">
+                                <span>Credit Utilization</span>
+                                <strong id="creditPercentage">0%</strong>
+                            </div>
+
+                            <div class="credit-progress-bar">
+                                <div id="creditProgress" class="credit-progress-fill"></div>
+                            </div>
+
+                            <p>
+                                Your available credit is calculated from
+                                your credit limit and current credit usage.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- QUICK LINKS -->
+                    <section class="profile-quick-links">
+
+                        <a href="orders.html" class="quick-link-card">
+
+                            <div class="quick-link-icon">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
+
+                            <div>
+                                <h3>View My Orders</h3>
+                                <p>Check your previous purchases.</p>
+                            </div>
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                        <a href="products.html" class="quick-link-card">
+
+                            <div class="quick-link-icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+
+                            <div>
+                                <h3>Continue Shopping</h3>
+                                <p>Explore the latest NOVA collection.</p>
+                            </div>
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+
+        <div class="footer-container">
+
+            <a href="products.html" class="brand-logo">
+                NOVA<span class="logo-dot">.</span>
+            </a>
+
+            <p>Made for the way you shop.</p>
+
+            <span>© 2026 NOVA. All rights reserved.</span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+
+</body>
+</html>

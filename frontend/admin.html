@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="admin-page">
+
+    <div id="adminDashboard" class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+
+            <a href="admin.html" class="brand-logo">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>NOVA</span>
+            </a>
+
+            <p class="sidebar-label">ADMIN MENU</p>
+
+            <nav class="admin-nav">
+                <a href="#dashboard" class="admin-nav-link active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Dashboard
+                </a>
+
+                <a href="#products-section" class="admin-nav-link">
+                    <i class="fa-solid fa-box"></i>
+                    Products
+                </a>
+
+                <a href="#categories-section" class="admin-nav-link">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Categories
+                </a>
+
+                <a href="#customers-section" class="admin-nav-link">
+                    <i class="fa-solid fa-users"></i>
+                    Customers
+                </a>
+
+                <a href="#sales-section" class="admin-nav-link">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Sales Reports
+                </a>
+
+                <a href="#inventory-section" class="admin-nav-link">
+                    <i class="fa-solid fa-warehouse"></i>
+                    Inventory Reports
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="products.html" class="admin-nav-link">
+                    <i class="fa-solid fa-store"></i>
+                    View Store
+                </a>
+
+                <button type="button" id="adminLogout" class="admin-nav-link logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </button>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="admin-main">
+
+            <header class="admin-header">
+                <div>
+                    <p class="admin-greeting">Welcome back,</p>
+                    <h1>Admin Dashboard</h1>
+                </div>
+
+                <div class="admin-header-right">
+                    <span class="admin-status">
+                        <i class="fa-solid fa-circle"></i>
+                        Admin Panel
+                    </span>
+                    <div class="admin-avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                </div>
+            </header>
+
+
+            <div id="adminMessage" class="message-box hidden"></div>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="admin-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Overview</h2>
+                        <p>Here's what's happening with your store.</p>
+                    </div>
+                </div>
+
+                <div class="admin-stats-grid">
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon products-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <div>
+                            <p>Total Products</p>
+                            <h3 id="productTotal">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon categories-icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <p>Total Categories</p>
+                            <h3 id="categoryTotal">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon customers-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div>
+                            <p>Total Customers</p>
+                            <h3 id="customerTotal">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon sales-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <p>Total Sales Records</p>
+                            <h3 id="salesTotal">0</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PRODUCTS -->
+            <section id="products-section" class="admin-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Product Management</h2>
+                        <p>Add, update and manage your store products.</p>
+                    </div>
+                </div>
+
+                <div class="admin-content-card">
+
+                    <h3 id="productFormHeading">Add New Product</h3>
+
+                    <form id="productForm">
+
+                        <input type="hidden" id="productId">
+
+                        <div class="admin-form-grid">
+
+                            <div class="form-group">
+                                <label for="productTitle">Product Name</label>
+                                <input type="text"
+                                       id="productTitle"
+                                       placeholder="Enter product name"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productCategory">Category</label>
+                                <select id="productCategory" required>
+                                    <option value="">Select category</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productPrice">Price (₹)</label>
+                                <input type="number"
+                                       id="productPrice"
+                                       min="0"
+                                       step="0.01"
+                                       placeholder="Enter price"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productQty">Quantity</label>
+                                <input type="number"
+                                       id="productQty"
+                                       min="0"
+                                       placeholder="Enter quantity"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productImageUrl">Product Image Path / URL</label>
+                            <input type="text"
+                                   id="productImageUrl"
+                                   placeholder="assets/images/product-name.webp">
+                            <small class="admin-field-help">Use an image inside frontend/assets/images or paste a valid image URL.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDescription">Description</label>
+                            <textarea id="productDescription"
+                                      rows="3"
+                                      placeholder="Enter product description"
+                                      required></textarea>
+                        </div>
+
+                        <label class="admin-checkbox">
+                            <input type="checkbox" id="productActive" checked>
+                            Product is active
+                        </label>
+
+                        <div class="admin-form-actions">
+                            <button type="submit"
+                                    id="productSubmitButton"
+                                    class="admin-primary-btn">
+                                <i class="fa-solid fa-plus"></i>
+                                Add Product
+                            </button>
+
+                            <button type="button"
+                                    id="resetProductForm"
+                                    class="admin-secondary-btn">
+                                Clear
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="admin-content-card">
+                    <div class="section-heading">
+                        <h3>All Products</h3>
+                    </div>
+
+                    <div id="adminProducts" class="admin-data-list">
+                        <p>Loading products...</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- CATEGORIES -->
+            <section id="categories-section" class="admin-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Category Management</h2>
+                        <p>Organize your products into categories.</p>
+                    </div>
+                </div>
+
+                <div class="admin-content-card">
+
+                    <h3 id="categoryFormHeading">Add New Category</h3>
+
+                    <form id="categoryForm">
+
+                        <input type="hidden" id="categoryId">
+
+                        <div class="admin-form-grid">
+
+                            <div class="form-group">
+                                <label for="categoryName">Category Name</label>
+                                <input type="text"
+                                       id="categoryName"
+                                       placeholder="Enter category name"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categoryDescription">Description</label>
+                                <input type="text"
+                                       id="categoryDescription"
+                                       placeholder="Enter category description">
+                            </div>
+
+                        </div>
+
+                        <div class="admin-form-actions">
+                            <button type="submit"
+                                    id="categorySubmitButton"
+                                    class="admin-primary-btn">
+                                <i class="fa-solid fa-plus"></i>
+                                Add Category
+                            </button>
+
+                            <button type="button"
+                                    id="resetCategoryForm"
+                                    class="admin-secondary-btn">
+                                Clear
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="admin-content-card">
+                    <h3>All Categories</h3>
+
+                    <div id="adminCategories" class="admin-data-list">
+                        <p>Loading categories...</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- CUSTOMERS -->
+            <section id="customers-section" class="admin-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Customer Management</h2>
+                        <p>View registered customers.</p>
+                    </div>
+                </div>
+
+                <div class="admin-content-card">
+
+                    <h3>Registered Customers</h3>
+
+                    <div id="adminCustomers" class="admin-data-list">
+                        <p>Loading customers...</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SALES REPORTS -->
+            <section id="sales-section" class="admin-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Sales Reports</h2>
+                        <p>View and analyze your store sales.</p>
+                    </div>
+                </div>
+
+                <div class="admin-content-card">
+
+                    <div class="admin-report-toolbar">
+                        <h3>Sales Analysis</h3>
+
+                        <select id="reportFilter">
+                            <option value="all">All Sales</option>
+                            <option value="cash">Cash Payments</option>
+                            <option value="credit">Credit Payments</option>
+                            <option value="category">Category-wise Sales</option>
+                            <option value="top">Top Selling Products</option>
+                            <option value="bottom">Least Selling Products</option>
+                        </select>
+                    </div>
+
+                    <div id="adminSalesReport" class="admin-data-list">
+                        <p>Select a report to view sales information.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- INVENTORY REPORTS -->
+            <section id="inventory-section" class="admin-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Inventory Reports</h2>
+                        <p>Monitor stock availability and product quantities.</p>
+                    </div>
+                </div>
+
+                <div class="admin-content-card">
+
+                    <div class="admin-report-toolbar">
+                        <h3>Inventory Analysis</h3>
+
+                        <select id="inventoryReportFilter">
+                            <option value="current-stock">Current Stock</option>
+                            <option value="category-wise">Category-wise Stock</option>
+                            <option value="high-stock">High Stock</option>
+                            <option value="low-stock">Low Stock</option>
+                        </select>
+                    </div>
+
+                    <div id="adminInventoryReport" class="admin-data-list">
+                        <p>Loading inventory information...</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <footer class="admin-footer">
+                <p>© 2026 NOVA Online Shopping Application. Admin Panel.</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#adminLogout").on("click", function () {
+                if (typeof logout === "function") {
+                    logout();
+                } else {
+                    localStorage.removeItem("novaToken");
+                    sessionStorage.removeItem("novaToken");
+                    window.location.href = "index.html";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

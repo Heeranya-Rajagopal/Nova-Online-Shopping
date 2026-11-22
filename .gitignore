@@ -1,0 +1,33 @@
+
+# Firebase service account credentials
+serviceAccountKey.json
+nova-private/
+
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Firebase credentials
+serviceAccountKey.json
+nova-private/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and editor files
+.DS_Store
+.vscode/
