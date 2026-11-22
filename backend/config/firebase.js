@@ -4,10 +4,18 @@ const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 const { getAuth } = require("firebase-admin/auth");
 const path = require("path");
 
-// Load the private Firebase service account
-const serviceAccount = require(
-    path.resolve(__dirname, "../../nova-private/serviceAccountKey.json")
-);
+// Load Firebase service account credentials
+let serviceAccount;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    // Use environment variable when deployed on Render
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} else {
+    // Use local service account file during development
+    serviceAccount = require(
+        path.resolve(__dirname, "../../nova-private/serviceAccountKey.json")
+    );
+}
 
 // Initialize Firebase only once
 const firebaseApp = getApps().length
